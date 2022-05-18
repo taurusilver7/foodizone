@@ -4,12 +4,12 @@ import mealsImg from "../../assets/meals.jpg";
 import classes from "./Header.module.css";
 import HeaderButton from "./HeaderButton";
 
-const Header = () => {
+const Header = ({ onShowCart }) => {
   return (
     <>
       <header className={classes.header}>
         <h1>FoodiZone</h1>
-        <HeaderButton />
+        <HeaderButton onClick={onShowCart} />
       </header>
 
       <div className={classes["main-image"]}>
