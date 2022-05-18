@@ -46,7 +46,8 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 
 - Create three folders in components directory to hold different component for the project.\
   UI folder for general UI elements, Layout for Header & related elements, Meals and Cart folders for corresponding components & elements.
-  
+
+- The header component has header title, the cart button (reusable component). The cartIcon is a svg format file function.
 
 ### Deployment
 
