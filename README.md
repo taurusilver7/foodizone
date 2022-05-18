@@ -60,6 +60,11 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 - Create a state to manage the cart modal in parent component `App`. Control the state from Header component cart button. Point the showcartHandler funtion to the Header component to execute upon cart-click.
 - The modal close fn should also work when the backdrop is closed. Add the hideCartHandler function to the Backdrop in Modal and add the functionality to Modal in cart. The close button and the backdrop executes the hideCartHandler function in App.
 
+### Cart Context
+
+- Instead of managing the states from parent component, set up the context to manage the states. Create the context files in /src/store directory.
+- The context and the provider for the states are created. All the components in the App component needs the state props, to rerender the application. Wrap the App with CartProvider to wrap all the components
+
 ### Deployment
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
