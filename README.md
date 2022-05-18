@@ -52,7 +52,10 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 - The Meal directory has a MealSummary with hard-coded text, AvailableMeals with an array of meal-list. The Meal component is the combination of the above two. The data mapped in the Meal component is separated into another wrapper component to provide html structure & css content— `Card`
 
 - For induvidual meal items, a customized mealItem compoenent is created with mealForm for markup form.
-- Another reuable component `Input` for form input field.
+- Another component `Input` for form input field. The Input component is a reusable one in UI directory
+
+- A Cart component to display items in the cart and implement cart functions. The cart is a modal displayed on the main page. The modal is mounted above the `root` div in the index.html file and the ReactDOM creates a protal for Backdrom and ModalOverlay components.
+- The newly creataed portals needs the location to portal (the overlay div above root in index.html) as an argument with what to portal.
 
 ### Deployment
 
