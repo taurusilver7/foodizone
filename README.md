@@ -44,6 +44,10 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 - Refactor the template to suit the project. Remove unnecessary stylesheets and scripting files.
 - Replace the default files with suitable project docs. [title icon](https://www.favicon.cc/?action=icon&file_id=951529)
 
+- Create three folders in components directory to hold different component for the project.\
+  UI folder for general UI elements, Layout for Header & related elements, Meals and Cart folders for corresponding components & elements.
+  
+
 ### Deployment
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
