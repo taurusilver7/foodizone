@@ -8,7 +8,7 @@ import CartContext from "./CartContext";
 const CartProvider = (props) => {
   const addItemHandler = (item) => {};
 
-  const removeItemHandler = () => {};
+  const removeItemHandler = (id) => {};
 
   const cartContext = {
     items: [],
