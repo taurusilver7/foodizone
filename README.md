@@ -63,7 +63,10 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 ### Cart Context
 
 - Instead of managing the states from parent component, set up the context to manage the states. Create the context files in /src/store directory.
-- The context and the provider for the states are created. All the components in the App component needs the state props, to rerender the application. Wrap the App with CartProvider to wrap all the components
+- The context and the provider for the states are created. All the components in the App component needs the state props, to rerender the application. Wrap the App with CartProvider to wrap all the components.
+
+- By using the useContext(CartContext) hook, the HeaderButton component will be re-evaluated by react whenever the context changes (update in CartProvider). Change the cart value to dynamic.
+- useReducer to manage the state in Provider to add an item to the cart.
 
 ### Deployment
 
