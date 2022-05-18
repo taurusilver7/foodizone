@@ -57,6 +57,9 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 - A Cart component to display items in the cart and implement cart functions. The cart is a modal displayed on the main page. The modal is mounted above the `root` div in the index.html file and the ReactDOM creates a protal for Backdrom and ModalOverlay components.
 - The newly creataed portals needs the location to portal (the overlay div above root in index.html) as an argument with what to portal.
 
+- Create a state to manage the cart modal in parent component `App`. Control the state from Header component cart button. Point the showcartHandler funtion to the Header component to execute upon cart-click.
+- The modal close fn should also work when the backdrop is closed. Add the hideCartHandler function to the Backdrop in Modal and add the functionality to Modal in cart. The close button and the backdrop executes the hideCartHandler function in App.
+
 ### Deployment
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
