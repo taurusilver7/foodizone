@@ -51,6 +51,9 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 
 - The Meal directory has a MealSummary with hard-coded text, AvailableMeals with an array of meal-list. The Meal component is the combination of the above two. The data mapped in the Meal component is separated into another wrapper component to provide html structure & css content— `Card`
 
+- For induvidual meal items, a customized mealItem compoenent is created with mealForm for markup form.
+- Another reuable component `Input` for form input field.
+
 ### Deployment
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
