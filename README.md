@@ -10,7 +10,7 @@ In the project directory, you can run:
 
 Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
+The page will reload when you make changes.
 You may also see any lint errors in the console.
 
 #### `npm test`
@@ -43,8 +43,8 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 Refactor the template to suit the project. Remove unnecessary stylesheets and scripting files.\
 Replace the default files with suitable project docs. [title icon](https://www.favicon.cc/?action=icon&file_id=951529)\
 
-- Create three folders in components directory to hold different component for the project.\
-  UI folder for general UI elements, Layout for Header & related elements, Meals and Cart folders for corresponding components & elements.
+Create three folders in components directory to hold different component for the project.\
+ UI folder for general UI elements, Layout for Header & related elements, Meals and Cart folders for corresponding components & elements.
 
 The header component has header title, the cart button (reusable component). The cartIcon is a svg format file function.\
 
@@ -56,16 +56,25 @@ Another component `Input` for form input field. The Input component is a reusabl
 A Cart component to display items in the cart and implement cart functions. The cart is a modal displayed on the main page. The modal is mounted above the `root` div in the index.html file and the ReactDOM creates a protal for Backdrom and ModalOverlay components.\
 The newly creataed portals needs the location to portal (the overlay div above root in index.html) as an argument with what to portal.\
 
-- Create a state to manage the cart modal in parent component `App`. Control the state from Header component cart button. Point the showcartHandler funtion to the Header component to execute upon cart-click.\
-  The modal close fn should also work when the backdrop is closed. Add the hideCartHandler function to the Backdrop in Modal and add the functionality to Modal in cart. The close button and the backdrop executes the hideCartHandler function in App.
+Create a state to manage the cart modal in parent component `App`. Control the state from Header component cart button. Point the showcartHandler funtion to the Header component to execute upon cart-click.\
+ The modal close fn should also work when the backdrop is closed. Add the hideCartHandler function to the Backdrop in Modal and add the functionality to Modal in cart. The close button and the backdrop executes the hideCartHandler function in App.
 
 ### Cart Context
 
 Instead of managing the states from parent component, set up the context to manage the states. Create the context files in /src/store directory.\
 The context and the provider for the states are created. All the components in the App component needs the state props, to rerender the application. Wrap the App with CartProvider to wrap all the components.
 
-- By using the useContext(CartContext) hook, the HeaderButton component will be re-evaluated by react whenever the context changes (update in CartProvider). Change the cart value to dynamic.
-  useReducer to manage the state in Provider to add an item to the cart.
+By using the useContext(CartContext) hook, the HeaderButton component will be re-evaluated by react whenever the context changes (update in CartProvider). Change the cart value to dynamic.
+useReducer to manage the state in CartProvider to add an item to the cart.
+
+Set a state to check the amount validity with a condition and add the item to the cart number in MealItemForm component. Add a forwardRef to the Input component to link the amountRef to the entered cart-item amount.
+
+Create another context in MealItem to execute addItem to the addCartHandler function. With this, the cart number represents the added items.
+
+Now, to update the items & order values in cart, create another context in Cart and replace the dummy array with the items in the context. Create functions to derieve the totalAmount, cart items.
+
+Create a CartItem component to display the order details in the cart modal. Work on complex reducer logic to organize the items in the cart.\
+Check for the preexistence of items in the cart before adding a new item. If found, update the item-count & totalAmount. Extend the logic to the add/minus buttons in the cart modal.
 
 ### Deployment
 
