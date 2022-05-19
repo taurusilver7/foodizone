@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./CartItem.module.css";
 
 const CartItem = ({ price, name, amount, onRemove, onAdd }) => {
-  const updatedPrice = `₹${price.toFixed()}`;
+  const updatedPrice = `₹${price.toFixed(2)}`;
 
   return (
     <li className={classes["cart-item"]}>
