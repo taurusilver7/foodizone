@@ -10,9 +10,30 @@ const defaultCartState = {
 
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
-    const updatedItems = state.items.concat(action.item);
+    // A check for pre existence of iems in the cart befre adding them. If existed, update the number of item, price & totalAmount
+    const cartIndex = state.items.findIndex(
+      (item) => item.id === action.item.id
+    );
+    const existingItem = state.items[cartIndex];
+    let updatedItems;
+
+    // if the case of same type items in cart prevailed.
+    if (existingItem) {
+      const updatedItem = {
+        ...existingItem,
+        amount: existingItem.amount + action.item.amount,
+      };
+      updatedItems = [...state.items];
+      updatedItems[cartIndex] = updatedItem;
+    } else {
+      updatedItems = state.items.concat(action.item);
+    }
+
     const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
+
+    // const updatedItems = state.items.concat(action.item);
+
     return {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
@@ -41,7 +62,7 @@ const CartProvider = (props) => {
     removeItem: removeItemHandler,
   };
   return (
-    <CartContext.Provider values={cartContext}>
+    <CartContext.Provider value={cartContext}>
       {props.children}
     </CartContext.Provider>
   );
