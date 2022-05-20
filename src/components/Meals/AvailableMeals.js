@@ -5,12 +5,18 @@ import MealItem from "./MealItem/MealItem";
 
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState();
   // https fetch req
   useEffect(() => {
     const fetchMeals = async () => {
       const response = await fetch(
         "https://foodizone-d0523-default-rtdb.firebaseio.com/meals.json"
       );
+
+      if (!response) {
+        throw new Error("Something went wrong!");
+      }
 
       const resData = await response.json(); // The resData obtained is an object with m1-m4 keys and the data in nested objects. To turn it into an array for mapping...
 
@@ -28,10 +34,32 @@ const AvailableMeals = () => {
       }
 
       setMeals(loadedMeals);
+      setLoading(false);
     };
 
-    fetchMeals();
-  }, []);
+    fetchMeals()
+      .then()
+      .catch((error) => {
+        setLoading(false);
+        setError(error.message);
+      });
+  }, [loading]);
+
+  if (loading) {
+    return (
+      <section className={classes.mealsLoading}>
+        <p>Loading....</p>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className={classes.mealsError}>
+        <p>Failed to load..</p>
+      </section>
+    );
+  }
 
   const mealsList = meals.map((meal) => (
     <MealItem
