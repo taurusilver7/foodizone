@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Toaster } from "react-hot-toast";
 import "./App.css";
 
 import Cart from "./components/Cart/Cart";
@@ -17,6 +18,7 @@ function App() {
   };
   return (
     <CartProvider>
+      <Toaster />
       {showCart && <Cart onClose={hideCartHandler} />}
       <Header onShowCart={showCartHandler} />
 
