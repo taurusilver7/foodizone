@@ -98,6 +98,9 @@ Gather the user data from the form, but uplift the data to Cart component, to ge
 
 - On the server, a developer shouldn't blindly trust the user data, as the validation could always be circumvented. The data on the server should always be validated.
 
+- Send a fetch req (POST method) to send the order & user data to the database. To add better UI, clear the form with a confirm message.
+- Add a method in CartProvider to clear out the cart after a successful order sequence.
+
 ### Deployment
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
