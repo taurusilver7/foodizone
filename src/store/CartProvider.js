@@ -9,6 +9,7 @@ const defaultCartState = {
 };
 
 const cartReducer = (state, action) => {
+  // Add an item to the cart
   if (action.type === "ADD") {
     // A check for pre existence of iems in the cart befre adding them. If existed, update the number of item, price & totalAmount
     const cartIndex = state.items.findIndex(
@@ -39,7 +40,7 @@ const cartReducer = (state, action) => {
       totalAmount: updatedTotalAmount,
     };
   }
-
+  // Remove an item from the cart
   if (action.type === "REMOVE") {
     // reduce the number of items by 1, and remove the item from the cart upon reaching 0.
     const itemIndex = state.items.findIndex((item) => item.id === action.id);
@@ -61,6 +62,11 @@ const cartReducer = (state, action) => {
       totalAmount: updatedTotalAmount,
     };
   }
+  // Empty the cart after an order.
+  if (action.type === "CLEAR") {
+    return defaultCartState;
+  }
+
   return defaultCartState;
 };
 
@@ -77,11 +83,16 @@ const CartProvider = (props) => {
     dispatchCart({ type: "REMOVE", id });
   };
 
+  const clearCartHandler = () => {
+    dispatchCart({ type: "CLEAR" });
+  };
+
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     addItem: addItemHandler,
     removeItem: removeItemHandler,
+    clearCart: clearCartHandler,
   };
   return (
     <CartContext.Provider value={cartContext}>
