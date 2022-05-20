@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import Card from "../UI/Card";
 import classes from "./AvailableMeals.module.css";
 import MealItem from "./MealItem/MealItem";

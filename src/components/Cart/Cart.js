@@ -41,10 +41,11 @@ const Cart = ({ onClose }) => {
         }),
       }
     );
-
-    toast.success("Order Successful!", {
-      id: orderToast,
-    });
+    if (response.ok) {
+      toast.success("Order Successful!", {
+        id: orderToast,
+      });
+    }
     setSubmitted(true);
     cartCtx.clearCart();
   };
