@@ -9,24 +9,28 @@ const DUMMY_MEALS = [
     name: "Sushi",
     description: "Finest fish and veggies",
     price: 549.99,
+    img: "",
   },
   {
     id: "m2",
     name: "Schnitzel",
     description: "A german specialty!",
     price: 299.99,
+    img: "",
   },
   {
     id: "m3",
     name: "Barbecue Burger",
     description: "American, raw, meaty",
     price: 169.99,
+    img: "",
   },
   {
     id: "m4",
     name: "Green Bowl",
     description: "Healthy...and green...",
     price: 89.99,
+    img: "",
   },
 ];
 
@@ -36,6 +40,7 @@ const AvailableMeals = () => {
       key={meal.id}
       id={meal.id}
       name={meal.name}
+      img={meal.img}
       price={meal.price}
       description={meal.description}
     />
