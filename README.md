@@ -77,7 +77,13 @@ Create a CartItem component to display the order details in the cart modal. Work
 Check for the preexistence of items in the cart before adding a new item. If found, update the item-count & totalAmount. Extend the logic to the add/minus buttons in the cart modal.
 
 ### Backend.
-- Create a firebase account to link the Realtime database to the App.
+
+- Create a firebase account to link the Realtime database to the App. Create a realtime database and fill in the database with the meal data in NoSQL structure.
+- Use the https fetch method and useEffect to render the sideeffects in AvailableMeals. Delete the dummy data. Send the https req to the database node.
+  \*\* Don't forget to add an extention of /meals.json to the https req node.
+- Once the responseData is parsed and the data is pushed into an array, the component is rerendered with the data once the fetching is complete. Since the fetching is an async task and loaded after the components are rendered for the first time, initially there would be no data.
+- Now the data is changeable and the component should be reevaluated once the data changes, a state is required to avoid discrepencies and bugs.
+- Load the array into the setMeals fn, and map through meals state to render the component. The promise sometimes might take some time to load the data, so a loading state for better UI is initiated.
 
 ### Deployment
 
