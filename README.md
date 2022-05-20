@@ -84,6 +84,15 @@ Check for the preexistence of items in the cart before adding a new item. If fou
 - Once the responseData is parsed and the data is pushed into an array, the component is rerendered with the data once the fetching is complete. Since the fetching is an async task and loaded after the components are rendered for the first time, initially there would be no data.
 - Now the data is changeable and the component should be reevaluated once the data changes, a state is required to avoid discrepencies and bugs.
 - Load the array into the setMeals fn, and map through meals state to render the component. The promise sometimes might take some time to load the data, so a loading state for better UI is initiated.
+- An error state for https error messages is initiated. A toast could also be used as an alternative for issuing error and loading messages.
+
+A Checkout component below the Cart modal to enter the user details for delivary. The order function to handle the checkout form.
+
+- The modal is refactored to display only cart-items until checkout initiation, and then the checkout modal below the cart with form handling.
+
+### Form submission
+
+- A useRef() hook to get the inputs are entered.
 
 ### Deployment
 
