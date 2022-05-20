@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import CartContext from "../../store/CartContext";
 import Modal from "../UI/Modal";
 import classes from "./Cart.module.css";
@@ -6,6 +7,7 @@ import CartItem from "./CartItem";
 import Checkout from "./Checkout";
 
 const Cart = ({ onClose }) => {
+  const [submitted, setSubmitted] = useState(false);
   const [checkOut, setCheckOut] = useState(false);
   const cartCtx = useContext(CartContext);
 
@@ -27,6 +29,26 @@ const Cart = ({ onClose }) => {
     setCheckOut(true);
   };
 
+  const submitHandler = async (userData) => {
+    const orderToast = toast.loading("Ordering...");
+    const response = await fetch(
+      "https://foodizone-d0523-default-rtdb.firebaseio.com/orders.json",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          user: userData,
+          orderedItems: cartCtx?.items,
+        }),
+      }
+    );
+
+    toast.success("Order Successful!", {
+      id: orderToast,
+    });
+    setSubmitted(true);
+    cartCtx.clearCart();
+  };
+
   const cartItems = (
     <ul className={classes["cart-items"]}>
       {cartCtx?.items.map((item) => (
@@ -44,7 +66,7 @@ const Cart = ({ onClose }) => {
 
   const modalAction = (
     <div className={classes.actions}>
-      <button onClick={onClose} className={classes["button-alt"]}>
+      <button onClick={onClose} className={classes["button--alt"]}>
         Close
       </button>
       {hasItems && (
@@ -55,19 +77,36 @@ const Cart = ({ onClose }) => {
     </div>
   );
 
+  const orderStatus = checkOut ? (
+    <Checkout
+      onClose={onClose}
+      onConfirm={submitHandler}
+      totalAmount={totalAmount}
+    />
+  ) : (
+    <>
+      {cartItems}
+      <div className={classes.total}>
+        <span>Total Amount</span>
+        <span>{totalAmount}</span>
+        {!checkOut && modalAction}
+      </div>
+    </>
+  );
+
   return (
     <Modal onClose={onClose}>
-      {checkOut ? (
-        <Checkout onClose={onClose} totalAmount={totalAmount} />
-      ) : (
+      {submitted ? (
         <>
-          {cartItems}
-          <div className={classes.total}>
-            <span>Total Amount</span>
-            <span>{totalAmount}</span>
-            {!checkOut && modalAction}
+          <p>Order placed. Please wait while we prepare your order!</p>
+          <div className={classes.actions}>
+            <button onClick={onClose} className={classes["button--alt"]}>
+              Close
+            </button>
           </div>
         </>
+      ) : (
+        orderStatus
       )}
     </Modal>
   );

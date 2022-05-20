@@ -5,7 +5,7 @@ import classes from "./Checkout.module.css";
 const isEmpty = (value) => value.trim() === "";
 const isPostalCode = (value) => value.trim().length !== 5;
 
-const Checkout = ({ onClose, totalAmount }) => {
+const Checkout = ({ onClose, totalAmount, onConfirm }) => {
   const [formValidity, setFormValidity] = useState({
     name: true,
     street: true,
@@ -41,11 +41,17 @@ const Checkout = ({ onClose, totalAmount }) => {
     const formValid =
       enteredName && enteredStreet && enteredCity && enteredPostal;
 
-    if (formValid) {
+    if (!formValid) {
       return;
     }
 
     // Submit card data.
+    onConfirm({
+      name,
+      street,
+      city,
+      postal,
+    });
   };
 
   const controlName = `${classes.control} ${
