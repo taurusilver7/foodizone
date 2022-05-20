@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import Card from "../UI/Card";
 import classes from "./AvailableMeals.module.css";
 import MealItem from "./MealItem/MealItem";
@@ -20,7 +21,7 @@ const AvailableMeals = () => {
 
       const resData = await response.json(); // The resData obtained is an object with m1-m4 keys and the data in nested objects. To turn it into an array for mapping...
 
-      console.log(resData);
+      // console.log(resData);
       const loadedMeals = [];
 
       for (let key in resData) {
