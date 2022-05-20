@@ -76,6 +76,9 @@ Now, to update the items & order values in cart, create another context in Cart 
 Create a CartItem component to display the order details in the cart modal. Work on complex reducer logic to organize the items in the cart.\
 Check for the preexistence of items in the cart before adding a new item. If found, update the item-count & totalAmount. Extend the logic to the add/minus buttons in the cart modal.
 
+### Backend.
+- Create a firebase account to link the Realtime database to the App.
+
 ### Deployment
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
