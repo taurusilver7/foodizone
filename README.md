@@ -92,7 +92,11 @@ A Checkout component below the Cart modal to enter the user details for delivary
 
 ### Form submission
 
-- A useRef() hook to get the inputs are entered.
+A useRef() hook to get the inputs are entered. Gather the entered data from ref and create an object to validate and push forward.\
+Check if the values are empty and postal code is exactly five number (chars) with handler functions.\
+Gather the user data from the form, but uplift the data to Cart component, to get the order data and forward them to the database.\
+
+- On the server, a developer shouldn't blindly trust the user data, as the validation could always be circumvented. The data on the server should always be validated.
 
 ### Deployment
 
